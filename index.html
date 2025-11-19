@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mídia Indoor Player</title>
+    <!-- Link para o CSS padrão -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div id="app">
+        <!-- Camadas de Fundo -->
+        <div id="fundo-principal"></div>
+        <div id="fundo-secundario"></div>
+
+        <!-- Logo (Canto Superior Direito) -->
+        <div id="logo-container" class="elemento-animado">
+            <img id="logo-img" src="" alt="Logo">
+        </div>
+
+        <!-- Área Esquerda: Produto e Selo -->
+        <div id="produto-container" class="elemento-animado">
+            <img id="produto-img" src="" alt="Produto">
+        </div>
+        <div id="selo-container" class="elemento-animado">
+            <img id="selo-img" src="" alt="Selo">
+        </div>
+
+        <!-- Área Direita: Descrição e Preço -->
+        <div id="descricao-container" class="elemento-animado">
+            <p id="descricao-texto">Carregando...</p>
+        </div>
+
+        <div id="preco-container" class="elemento-animado">
+            <span class="simbolo-real">R$</span>
+            <!-- O preço aparecerá aqui instantaneamente -->
+            <span id="preco-texto"></span>
+        </div>
+
+        <!-- Rodapé Direito: QR Code e Chamada para Ação -->
+        <div id="info-inferior-wrapper" class="elemento-animado">
+            <div id="qr-texto-container">
+                <p id="qr-texto">Aproveite agora</p>
+            </div>
+            <div id="qrcode-container">
+                <img id="qrcode-img" src="" alt="QR Code">
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Principal -->
+    <script src="script.js"></script> 
+</body>
+</html>

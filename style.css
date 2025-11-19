@@ -1,0 +1,232 @@
+/* style.css - Layout Horizontal Otimizado (Sem Typewriter) */
+
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&display=swap');
+
+:root {
+    /* Cores padrão (serão substituídas pela API) */
+    --cor-fundo-principal: #D90404;
+    --cor-fundo-secundario: #F7B500;
+    --cor-texto-descricao: #FFFFFF;
+    --cor-texto-preco: #FFFFFF;
+    --cor-seta-qr: #00A300;
+}
+
+html, body {
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    overflow: hidden;
+    font-family: 'Oswald', sans-serif;
+    background-color: #000;
+}
+
+#app {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* --- FUNDOS --- */
+#fundo-principal {
+    background-color: var(--cor-fundo-principal);
+    background-image: radial-gradient(circle at 30% 50%, var(--cor-fundo-principal) 0%, #000000 140%);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+#fundo-secundario {
+    background-color: var(--cor-fundo-secundario);
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 52%; 
+    height: 100%;
+    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+    z-index: 2;
+    opacity: 0.95; 
+}
+
+/* --- ELEMENTOS GERAIS --- */
+.elemento-animado {
+    position: absolute;
+    opacity: 0;
+    z-index: 10;
+}
+
+/* --- LOGO --- */
+#logo-container {
+    top: 3vh;
+    right: 3vw;
+    width: 25vw;  
+    height: 18vh; 
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start; 
+    z-index: 20;
+}
+#logo-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+}
+
+/* --- PRODUTO --- */
+#produto-container {
+    top: 10vh;
+    left: 10vw; 
+    width: 38vw; 
+    height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+}
+#produto-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    filter: drop-shadow(20px 20px 30px rgba(0,0,0,0.5));
+}
+
+/* --- SELO --- */
+#selo-container {
+    top: 8vh;
+    left: 2vw; 
+    width: 20vw; 
+    height: 20vw;
+    z-index: 15;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#selo-img {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    animation: pulse 2s infinite;
+}
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+    100% { transform: scale(1); }
+}
+
+/* --- DESCRIÇÃO --- */
+#descricao-container {
+    top: 25vh; 
+    right: 4vw;
+    width: 42vw;
+    height: 18vh;
+    display: flex;
+    align-items: flex-end;
+    justify-content: flex-end;
+    z-index: 12;
+}
+#descricao-texto {
+    font-size: 5.5vh; 
+    color: var(--cor-texto-descricao);
+    font-weight: 400;
+    text-align: right;
+    margin: 0;
+    line-height: 1.1;
+    text-transform: uppercase;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
+}
+
+/* --- PREÇO (Limpo e Grande) --- */
+#preco-container {
+    top: 44vh;
+    right: 4vw;
+    width: 45vw;
+    height: 28vh;
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-end;
+    color: var(--cor-texto-preco);
+    font-weight: 700;
+    z-index: 12;
+    text-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+}
+.simbolo-real {
+    font-size: 8vh;
+    margin-top: 2vh;
+    margin-right: 1vw;
+}
+#preco-texto {
+    font-size: 22vh;
+    line-height: 0.9;
+    letter-spacing: -5px;
+}
+
+/* --- QR CODE E CTA --- */
+#info-inferior-wrapper {
+    bottom: 4vh;
+    right: 4vw;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    z-index: 12;
+}
+
+#qrcode-container {
+    width: 13vh; 
+    height: 13vh;
+    background-color: white;
+    padding: 1vh;
+    border-radius: 1vh;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+#qrcode-img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+#qr-texto-container {
+    background-color: var(--cor-seta-qr);
+    padding: 1.5vh 4vh; 
+    margin-right: 2.5vw;
+    border-radius: 50px;
+    position: relative;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+#qr-texto-container::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: -1vw;
+    width: 0;
+    height: 0;
+    border-top: 1.2vh solid transparent;
+    border-bottom: 1.2vh solid transparent;
+    border-left: 1.5vw solid var(--cor-seta-qr);
+}
+
+#qr-texto {
+    margin: 0;
+    color: white;
+    font-size: 4.2vh; 
+    font-weight: 600;
+    white-space: nowrap;
+    letter-spacing: 1px;
+}
+
+/* --- ANIMAÇÕES --- */
+.slideInUp { animation: slideInUp 0.8s ease-out forwards; }
+@keyframes slideInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+
+.slideInLeft { animation: slideInLeft 0.8s ease-out forwards; }
+@keyframes slideInLeft { from { opacity: 0; transform: translateX(-100px); } to { opacity: 1; transform: translateX(0); } }
+
+.slideInRight { animation: slideInRight 0.8s ease-out forwards; }
+@keyframes slideInRight { from { opacity: 0; transform: translateX(100px); } to { opacity: 1; transform: translateX(0); } }
+
+.slideOutLeft { animation: slideOutLeft 0.5s ease-in forwards; }
+@keyframes slideOutLeft { to { opacity: 0; transform: translateX(-100px); } }
+
+.slideOutRight { animation: slideOutRight 0.5s ease-in forwards; }
+@keyframes slideOutRight { to { opacity: 0; transform: translateX(100px); } }
