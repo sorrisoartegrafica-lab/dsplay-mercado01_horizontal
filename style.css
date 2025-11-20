@@ -1,12 +1,16 @@
-/* style.css - Layout Horizontal Otimizado (Sem Typewriter) */
+/* style.css - Layout Horizontal Final para GitHub */
 
 @import url('https://fonts.googleapis.com/css2?family=Oswald:wght@300;400;600;700&display=swap');
 
+* {
+    box-sizing: border-box;
+}
+
 :root {
-    /* Cores padrão (serão substituídas pela API) */
+    /* Cores Placeholder (Serão substituídas pela API) */
     --cor-fundo-principal: #D90404;
     --cor-fundo-secundario: #F7B500;
-    --cor-texto-descricao: #FFFFFF;
+    --cor-texto-descricao: #FFFFFF; 
     --cor-texto-preco: #FFFFFF;
     --cor-seta-qr: #00A300;
 }
@@ -15,6 +19,7 @@ html, body {
     height: 100vh;
     width: 100vw;
     margin: 0;
+    padding: 0;
     overflow: hidden;
     font-family: 'Oswald', sans-serif;
     background-color: #000;
@@ -26,26 +31,28 @@ html, body {
     height: 100%;
 }
 
-/* --- FUNDOS --- */
+/* --- 1. FUNDO (Gradiente da Cor Principal) --- */
 #fundo-principal {
     background-color: var(--cor-fundo-principal);
-    background-image: radial-gradient(circle at 30% 50%, var(--cor-fundo-principal) 0%, #000000 140%);
+    background-image: linear-gradient(180deg, var(--cor-fundo-principal) 0%, #1a0000 120%);
     position: absolute;
     width: 100%;
     height: 100%;
     z-index: 1;
 }
 
+/* --- 2. ONDA (Cor Secundária) --- */
 #fundo-secundario {
     background-color: var(--cor-fundo-secundario);
     position: absolute;
-    top: 0;
+    bottom: 0;
     right: 0;
-    width: 52%; 
-    height: 100%;
-    clip-path: polygon(15% 0, 100% 0, 100% 100%, 0% 100%);
+    width: 100%;
+    height: 53%; 
+    clip-path: ellipse(120% 100% at 90% 100%);
     z-index: 2;
-    opacity: 0.95; 
+    opacity: 0.95;
+    box-shadow: 0 -10px 30px rgba(0,0,0,0.3);
 }
 
 /* --- ELEMENTOS GERAIS --- */
@@ -55,15 +62,15 @@ html, body {
     z-index: 10;
 }
 
-/* --- LOGO --- */
+/* --- 3. LOGO --- */
 #logo-container {
-    top: 3vh;
-    right: 3vw;
-    width: 25vw;  
-    height: 18vh; 
+    top: 4vh;
+    right: 4vw;
+    width: 20vw;
+    height: 15vh;
     display: flex;
-    justify-content: flex-end;
-    align-items: flex-start; 
+    justify-content: flex-end; 
+    align-items: flex-start;
     z-index: 20;
 }
 #logo-img {
@@ -73,60 +80,73 @@ html, body {
     filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
 }
 
-/* --- PRODUTO --- */
+/* --- 4. PRODUTO --- */
 #produto-container {
-    top: 10vh;
-    left: 10vw; 
-    width: 38vw; 
-    height: 80vh;
+    bottom: 12vh; 
+    left: 30vw;   
+    width: 30vw;  
+    height: 80vh; 
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: flex-end; 
     z-index: 10;
+    position: absolute;
 }
+
 #produto-img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    filter: drop-shadow(20px 20px 30px rgba(0,0,0,0.5));
+    filter: drop-shadow(15px 10px 25px rgba(0,0,0,0.4));
+    z-index: 3;
+    position: relative;
 }
 
-/* --- SELO --- */
+#produto-img-ghost {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    z-index: 1;
+    opacity: 0.4; 
+    filter: blur(4px); 
+    transform: translate(-90%, -40%) scale(0.8); 
+}
+
+/* --- 5. SELO --- */
 #selo-container {
-    top: 8vh;
-    left: 2vw; 
-    width: 20vw; 
-    height: 20vw;
+    top: 15vh; 
+    left: 6vw;    
+    width: 28vw;  
+    height: 30vw; 
     z-index: 15;
     display: flex;
     justify-content: center;
     align-items: center;
+    transform-origin: center center;
 }
 #selo-img {
     max-width: 100%;
     max-height: 100%;
     object-fit: contain;
-    animation: pulse 2s infinite;
-}
-@keyframes pulse {
-    0% { transform: scale(1); }
-    50% { transform: scale(1.05); }
-    100% { transform: scale(1); }
+    filter: drop-shadow(0 5px 15px rgba(0,0,0,0.3));
 }
 
-/* --- DESCRIÇÃO --- */
+/* --- 6. DESCRIÇÃO --- */
 #descricao-container {
-    top: 25vh; 
+    top: 28vh;    
     right: 4vw;
-    width: 42vw;
-    height: 18vh;
+    width: 35vw;  
+    height: 15vh; 
     display: flex;
-    align-items: flex-end;
-    justify-content: flex-end;
+    justify-content: flex-end; 
+    align-items: flex-end; 
     z-index: 12;
 }
 #descricao-texto {
-    font-size: 5.5vh; 
+    font-size: 4.5vh; 
     color: var(--cor-texto-descricao);
     font-weight: 400;
     text-align: right;
@@ -136,48 +156,51 @@ html, body {
     text-shadow: 2px 2px 4px rgba(0,0,0,0.4);
 }
 
-/* --- PREÇO (Limpo e Grande) --- */
+/* --- 7. PREÇO --- */
 #preco-container {
-    top: 44vh;
+    bottom: 28vh; 
     right: 4vw;
     width: 45vw;
-    height: 28vh;
+    height: 20vh; 
     display: flex;
-    align-items: flex-start;
     justify-content: flex-end;
+    align-items: center; 
     color: var(--cor-texto-preco);
     font-weight: 700;
     z-index: 12;
-    text-shadow: 4px 4px 0px rgba(0,0,0,0.2);
+    text-shadow: 3px 3px 0px rgba(0,0,0,0.2);
 }
 .simbolo-real {
-    font-size: 8vh;
-    margin-top: 2vh;
-    margin-right: 1vw;
+    font-size: 7vh;
+    margin-right: 1.5vh;
+    margin-top: 2vh; 
 }
 #preco-texto {
-    font-size: 22vh;
+    font-size: 22vh; 
     line-height: 0.9;
     letter-spacing: -5px;
 }
 
-/* --- QR CODE E CTA --- */
+/* --- 8. RODAPÉ (QR ESQUERDA - BOTÃO DIREITA) --- */
 #info-inferior-wrapper {
+    position: absolute;
     bottom: 4vh;
-    right: 4vw;
+    left: 4vw;
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    z-index: 12;
+    gap: 1.5vh;
+    z-index: 20;
 }
 
+/* 1. QR CODE */
 #qrcode-container {
-    width: 13vh; 
+    order: 1;
+    width: 13vh;
     height: 13vh;
     background-color: white;
-    padding: 1vh;
-    border-radius: 1vh;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+    padding: 0.5vh;
+    border-radius: 0.5vh;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
 }
 #qrcode-img {
     width: 100%;
@@ -185,45 +208,81 @@ html, body {
     object-fit: contain;
 }
 
+/* 2. BOTÃO DE TEXTO */
 #qr-texto-container {
+    order: 2;
     background-color: var(--cor-seta-qr);
-    padding: 1.5vh 4vh; 
-    margin-right: 2.5vw;
+    padding: 1vh 3vh;
     border-radius: 50px;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    height: 6vh;
     position: relative;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    margin-left: 0.5vh; 
+    border: 1px solid rgba(255,255,255,0.3);
 }
+
+/* SETA (Apontando para Esquerda -> QR) */
 #qr-texto-container::after {
     content: "";
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
-    right: -1vw;
+    left: -0.8vh;
+    right: auto; 
     width: 0;
     height: 0;
-    border-top: 1.2vh solid transparent;
-    border-bottom: 1.2vh solid transparent;
-    border-left: 1.5vw solid var(--cor-seta-qr);
+    border-top: 0.8vh solid transparent;
+    border-bottom: 0.8vh solid transparent;
+    border-right: 1vh solid var(--cor-seta-qr); 
+    border-left: none;
 }
 
 #qr-texto {
     margin: 0;
     color: white;
-    font-size: 4.2vh; 
-    font-weight: 600;
+    font-size: 2.2vh;
+    font-weight: 700;
     white-space: nowrap;
-    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
 /* --- ANIMAÇÕES --- */
-.slideInUp { animation: slideInUp 0.8s ease-out forwards; }
-@keyframes slideInUp { from { opacity: 0; transform: translateY(50px); } to { opacity: 1; transform: translateY(0); } }
+.fadeIn { animation: fadeIn 1.2s ease-out forwards; }
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
 
-.slideInLeft { animation: slideInLeft 0.8s ease-out forwards; }
-@keyframes slideInLeft { from { opacity: 0; transform: translateX(-100px); } to { opacity: 1; transform: translateX(0); } }
+.slideInLeft { animation: slideInLeft 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+@keyframes slideInLeft { 
+    from { opacity: 0; transform: translateX(-100px); } 
+    to { opacity: 1; transform: translateX(0); } 
+}
 
-.slideInRight { animation: slideInRight 0.8s ease-out forwards; }
-@keyframes slideInRight { from { opacity: 0; transform: translateX(100px); } to { opacity: 1; transform: translateX(0); } }
+.stampIn { animation: stampIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards; }
+@keyframes stampIn {
+    0% { opacity: 0; transform: scale(3); }
+    50% { opacity: 1; transform: scale(0.8); }
+    70% { transform: scale(1.1) rotate(-3deg); }
+    100% { opacity: 1; transform: scale(1) rotate(-5deg); }
+}
+
+.slideInRight { animation: slideInRight 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+@keyframes slideInRight { 
+    from { opacity: 0; transform: translateX(100px); } 
+    to { opacity: 1; transform: translateX(0); } 
+}
+
+.slideInUp { animation: slideInUp 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; }
+@keyframes slideInUp { 
+    from { opacity: 0; transform: translateY(50px); } 
+    to { opacity: 1; transform: translateY(0); } 
+}
+
+.elasticUp { animation: elasticUp 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards; }
+@keyframes elasticUp {
+    from { opacity: 0; transform: translateY(100px); }
+    to { opacity: 1; transform: translateY(0); }
+}
 
 .slideOutLeft { animation: slideOutLeft 0.5s ease-in forwards; }
 @keyframes slideOutLeft { to { opacity: 0; transform: translateX(-100px); } }
